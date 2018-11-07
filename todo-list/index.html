@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="demo1">
+    <div>{{message}}</div>
+    <div v-text="message2"></div>
+    <div v-html="message2"></div>
+    <div v-on:click="onBtnClick">btn</div>
+    <div @click="onBtnClick">btn2</div>
+    <div v-bind:title="title">title</div>
+    <div :title="title">title</div>
+    <input v-model="inputValue"/>
+    <div>{{inputValue}}</div>
+</div>
+<br/>
+
+<div id="demo2">
+    姓：<input v-model="firstName"/>
+    名：<input v-model="lastName"/>
+    <div>{{fullName}}</div>
+    <div>changeTimes:{{count}}</div>
+</div>
+<br/>
+
+<div id="demo3">
+    <div v-if="isShow">Hello World</div>
+    <div v-show="isShow">Hello World2</div>
+    <button @click="onToggleBtnCLick">toggle</button>
+</div>
+<br/>
+
+<div id="demo4">
+    <input v-model="newItem" v-on:keyup.enter="onEnterClick"/> 按回车输入
+    <ul>
+        <li v-for="item of items">{{item}}</li>
+    </ul>
+</div>
+<br/>
+
+<div id="demo5">
+    <div>点击删除</div>
+    <ul>
+        <global-todo-item v-for="(item, index) of items"
+                          :key="index"
+                          :content="item"
+                          :index="index"
+                          @delete="handleDelete"
+        >
+        </global-todo-item>
+        <local-todo-item></local-todo-item>
+    </ul>
+</div>
+<br/>
+
+<script>
+    new Vue({
+        el: '#demo1',
+        data: {
+            message: 'hello world',
+            message2: '<span>hello world2</span>',
+            title: "this is title",
+            inputValue: ""
+        },
+        methods: {
+            onBtnClick: function () {
+                alert("click")
+            }
+        }
+    })
+
+    new Vue({
+        el: '#demo2',
+        data: {
+            firstName: '',
+            lastName: '',
+            count: 0
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        },
+        watch: {
+            fullName: function () {
+                this.count++
+            }
+        }
+    })
+
+    new Vue({
+        el: "#demo3",
+        data: {
+            isShow: true
+        },
+        methods: {
+            onToggleBtnCLick: function () {
+                this.isShow = !this.isShow;
+            }
+        }
+    })
+
+    new Vue({
+        el: "#demo4",
+        data: {
+            newItem: '',
+            items: []
+        },
+        methods: {
+            onEnterClick: function () {
+                this.items.push(this.newItem);
+
+            }
+        }
+    })
+
+    /**
+     * 全局组件
+     */
+    Vue.component('global-todo-item', {
+        props: ['content', 'index'], //接受从外部传进来的属性
+        template: '<li @click="onItemClick">{{content}} index:{{index}}</li>',
+        methods: {
+            onItemClick: function () {
+                //子组件通知父组件，将items中的自己给删掉
+                this.$emit('delete', this.index);
+            }
+        }
+    })
+
+    /**
+     * 局部组件
+     */
+    var TodoItem = {
+        template: '<li>todo-item2</li>'
+    }
+
+    new Vue({
+        el: "#demo5",
+        data: {
+            items: [1, 2, 3]
+        },
+        components: {
+            'local-todo-item': TodoItem //注册局部组件
+        },
+        methods: {
+            'handleDelete': function (index) {
+                this.items.splice(index, 1)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
