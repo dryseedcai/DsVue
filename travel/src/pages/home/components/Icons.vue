@@ -93,39 +93,42 @@
         height 0
         padding-bottom 50%
 
-    .icon
-        position relative
-        overflow hidden
-        float left
-        height 0
-        width 25%
-        /* 宽度的四分之一 */
-        padding-bottom 25%
+    .icons
+        margin-top .1rem
 
-        .icon-img-div
-            position absolute
-            top 0
-            left 0
-            right 0
-            bottom .44rem
-            box-sizing border-box
-            padding .1rem
+        .icon
+            position relative
+            overflow hidden
+            float left
+            height 0
+            width 25%
+            /* 宽度的四分之一 */
+            padding-bottom 25%
 
-            .icon-img
-                display block
-                margin 0 auto
-                height 100%
+            .icon-img-div
+                position absolute
+                top 0
+                left 0
+                right 0
+                bottom .44rem
+                box-sizing border-box
+                padding .1rem
 
-        .icon-desc
-            position absolute
-            left 0
-            right 0
-            bottom 0
-            line-height .44rem
-            height .44rem
-            color $darkTextColor
-            text-align center
-            ellipsis()
+                .icon-img
+                    display block
+                    margin 0 auto
+                    height 100%
+
+            .icon-desc
+                position absolute
+                left 0
+                right 0
+                bottom 0
+                line-height .44rem
+                height .44rem
+                color $darkTextColor
+                text-align center
+                ellipsis()
 </style>
 
 
