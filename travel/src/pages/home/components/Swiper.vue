@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <swiper :options="swiperOption" ref="mySwiper">
+        <swiper :options="swiperOption">
             <swiper-slide v-for="(item, index) in swiperList">
                 <img class='swiper-img'
                      v-bind:key="item.id"
