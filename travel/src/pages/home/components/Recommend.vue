@@ -18,35 +18,11 @@
 <script>
     export default {
         name: "HomeRecommend",
+        props: {
+            recommendList: Array
+        },
         data: function () {
-            return {
-                recommendList: [
-                    {
-                        id: '0001',
-                        imgUrl: 'http://img1.qunarzz.com/sight/p0/1704/c9/c936f3fccfc6d7eda3.img.jpg_200x200_46052773.jpg',
-                        title: '上海杜莎夫人蜡像馆',
-                        desc: '上海市黄浦区南京西路2-68号新世界商厦10楼'
-                    },
-                    {
-                        id: '0002',
-                        imgUrl: 'http://img1.qunarzz.com/sight/p0/1811/e4/e4b9b471d2afc473a3.img.jpg_200x200_9a7794fc.jpg',
-                        title: '上海欢乐谷',
-                        desc: '上海市松江区佘山镇林湖路888号'
-                    },
-                    {
-                        id: '0003',
-                        imgUrl: 'http://img1.qunarzz.com/sight/p0/1607/7c/7cda8b6782dabd80b4.img.jpg_200x200_2039e660.jpg',
-                        title: '上海迪士尼乐园',
-                        desc: '上海市浦东新区川沙新镇上海迪士尼度假区内'
-                    },
-                    {
-                        id: '0004',
-                        imgUrl: 'http://img1.qunarzz.com/sight/p0/1502/ba/ba5f873a22327e0f.water.jpg_200x200_9bf5cc14.jpg',
-                        title: '上海影视乐园',
-                        desc: '上海市松江区车墩镇北松公路4915号'
-                    },
-                ]
-            }
+            return {}
         }
     }
 </script>
