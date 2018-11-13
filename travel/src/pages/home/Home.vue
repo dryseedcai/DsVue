@@ -22,8 +22,6 @@
     export default {
         name: "Home",
         components: {
-            HomeWeekend,
-            HomeRecommend,
             'home-header': HomeHeader,
             'home-swiper': HomeSwiper,
             'home-icons': HomeIcons,
