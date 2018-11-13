@@ -50,7 +50,7 @@
                 result = result.data
                 if (result.ret && result.data) {
                     const data = result.data
-                    console.log(data);
+                    //console.log(data);
                     this.cities = data.cities
                     this.hotCities = data.hotCities
                 }

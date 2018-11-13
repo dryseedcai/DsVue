@@ -12,6 +12,11 @@ import '@/assets/styles/iconfont.css'
  */
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+/**
+ * import vuex
+ * https://vuex.vuejs.org/zh/guide/
+ */
+import store from './store'
 
 Vue.config.productionTip = false;
 fastClick.attach(document.body);
@@ -19,5 +24,6 @@ Vue.use(VueAwesomeSwiper);
 
 new Vue({
     router: router,
+    store: store,
     render: h => h(App)
 }).$mount('#app');

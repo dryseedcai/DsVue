@@ -6,7 +6,7 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">{{this.currentCity}}</div>
+                        <div class="button">{{this.$store.state.city}}</div>
                     </div>
                 </div>
             </div>
@@ -56,9 +56,7 @@
             letter: String
         },
         data() {
-            return {
-                currentCity: "北京"
-            }
+            return {}
         },
         computed: {},
         mounted() {
@@ -67,10 +65,15 @@
         watch: {
             letter() {
                 if (this.letter) {
-                    console.log(this.$refs[this.letter]); //输出的是v-for的数组
+                    //console.log(this.$refs[this.letter]); //输出的是v-for的数组
                     const element = this.$refs[this.letter][0]
                     this.scroll.scrollToElement(element)
                 }
+            }
+        },
+        methods: {
+            handleCityClick(city) {
+                this.$store.dispatch("changeCity", city);
             }
         }
 
