@@ -73,7 +73,11 @@
         },
         methods: {
             handleCityClick(city) {
-                this.$store.dispatch("changeCity", city);
+                //调用store的actions中的方法
+                //this.$store.dispatch("changeCity", city);
+                //调用store的mutations中的方法
+                this.$store.commit("changeCity", city);
+                this.$router.push('/')
             }
         }
 
