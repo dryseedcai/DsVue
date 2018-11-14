@@ -5,6 +5,7 @@ import fastClick from 'fastclick'
 import '@/assets/styles/reset.css'
 import '@/assets/styles/border.css'
 import '@/assets/styles/iconfont.css'
+import 'babel-polyfill'
 
 /**
  * import vue-awesome-swiper
