@@ -1,23 +1,18 @@
 <template>
     <div id="app">
-        <!--<div id="nav">
-            <router-link to="/">Home</router-link>
-        </div>-->
-        <!-- router-view 显示的是当前路由地址所对应的内容-->
-        <router-view/>
+        <!-- 对内容进行缓存，重新载入时，不会触发mounted生命周期 -->
+        <keep-alive>
+            <!-- router-view 显示的是当前路由地址所对应的内容-->
+            <router-view/>
+        </keep-alive>
     </div>
 </template>
 
 <script>
-    export default {}
+    export default {
+        name: 'App'
+    }
 </script>
 
 <style>
-    /*#app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }*/
 </style>

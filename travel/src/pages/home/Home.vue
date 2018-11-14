@@ -15,7 +15,6 @@
     import HomeIcons from './components/Icons.vue'
     import HomeRecommend from './components/Recommend.vue'
     import HomeWeekend from './components/Weekend.vue'
-
     //引入axios
     import axios from 'axios'
 
@@ -29,11 +28,23 @@
             'home-weekend': HomeWeekend,
         },
         mounted: function () {
+            //console.log("mounted")
+            this.lastCity = this.$store.state.city;
             this.getHomeInfo();
+        },
+        /**
+         * <keep-alive>，页面重新被显示时，activated会被调用
+         */
+        activated: function () {
+            //console.log("activated")
+            if (this.lastCity !== this.$store.state.city) {
+                this.lastCity = this.$store.state.city;
+                this.getHomeInfo();
+            }
         },
         methods: {
             getHomeInfo: function () {
-                axios.get('/api/index.json')
+                axios.get('/api/index.json?city=' + this.$store.state.city)
                     .then(this.getHomeInfoSucc)
             },
             getHomeInfoSucc: function (result) {
@@ -48,6 +59,7 @@
         },
         data: function () {
             return {
+                lastCity: '',
                 swiperList: [],
                 iconList: [],
                 recommendList: [],
